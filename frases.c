@@ -2,25 +2,25 @@
 #include<stdio.h>
 #include<string.h>
 #include<ctype.h>
+#include<locale.h>
 
 int main()
 {
-    char frases [50];
-    int qtdfrases = 5;
+    setlocale(LC_ALL, "Portuguese");
+    char frase1 [50];
+   
 
-    printf("*****Adicione suas frases*****\n");
+    printf("Adicione a  frase\n");
+    gets(frase1);
 
-    for (int i = 1; i <= qtdfrases; i++)
+    for (int i = 0; i < strlen(frase1); i++)
     {
-        printf("Adicione a %i frase\n", i);
-        scanf("%s", frases);
+        printf("%c", toupper(frase1[i]));
     }
+
     
+    
+   
 
-
-
-
-
-
-
+   
 }
