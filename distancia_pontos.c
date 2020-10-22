@@ -59,4 +59,6 @@ int main()
 {
     menu(); //menu de opcoes
     escolha(); //chama a funcão com toda estrutura de codigo das validações
+
+    return 0;
 }
