@@ -4,30 +4,30 @@
 #include<ctype.h>
 #include<locale.h>
 
-char maiusculas [5][50];
-char frase1 [5][50];
+char maiusculas [5][50]; //vetor para salvar as frases convertidas para letra maiuscula
+char frases [5][50]; //vetor para adicionar as frases
 
-void adicionafrase()
+void adicionafrases() //função que adiciona as frases digitadas
 {
     for (int i = 1; i <= 5 ; i++)
     {
         printf("Adicione a frase [%i] \n", i);
-        gets(frase1[i]);
+        gets(frases[i]);
     }
 }
 
-void convertemaiusculas()
+void converteparamaiusculas() //função que converte para letras maiusculas, foi preciso utilizar loop
 {
     for (int i = 1; i <= 5; i++)
     {
         for (int j = 0; j < 50; j++)
         {
-            maiusculas[i][j] = toupper(frase1[i][j]);
+            maiusculas[i][j] = toupper(frases[i][j]);
         }    
     }
 }
 
-void imprimepalavras()
+void imprimepalavras() //função para imprimir as palavras
 {
      for (int i = 1; i <=5 ; i++)
     {
@@ -35,33 +35,38 @@ void imprimepalavras()
     }
 }
 
-
-int main()
+void gravapalavrasnoarquivo(char arquivo[15]) //função que grava as palavras no arquivo, utilizando w como tipo de gravação, foi preciso usar um loop
 {
-    setlocale(LC_ALL, "Portuguese");
-    
-    char nomearquivo[15];
-    printf("Digite o nome do arquivo: ");
-    gets(nomearquivo);
-    strcat(nomearquivo, ".txt");
-
-    adicionafrase();
-    convertemaiusculas();
-
-    printf("\n");
-
     FILE * f;
-    f = fopen(nomearquivo, "w");
+    f = fopen(arquivo, "w");
 
     for (int i = 1; i <= 5 ; i++)
     {
         fprintf(f, "\n%s", maiusculas[i]);
     }
     fclose(f);
+}
 
+void crianomedoarquivo(char nome[15]) //função para criar nome do arquivo, solicitado ao usuario
+{
+    printf("Digite o nome do arquivo: ");
+    gets(nome);
+    strcat(nome, ".txt");
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Portuguese");
+    char nomearquivo[15];
+    
+    crianomedoarquivo(nomearquivo);
+    adicionafrases();
+    converteparamaiusculas();
+    printf("\n");
+    gravapalavrasnoarquivo(nomearquivo);
     system("cls");
-
     imprimepalavras();
     
+    return 0;
 }
 
