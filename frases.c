@@ -35,6 +35,7 @@ void imprimepalavras()
     }
 }
 
+
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
@@ -46,7 +47,7 @@ int main()
 
     adicionafrase();
     convertemaiusculas();
-    
+
     printf("\n");
 
     FILE * f;
