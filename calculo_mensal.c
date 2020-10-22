@@ -72,4 +72,6 @@ int main()
     entradadedados(); //chama a função entrada de dados, para receber nome e salario
     validaimposto(); //chama a função que valida o imposto, aliquota e salario final
     imprimedados(); //chama a função que exibe o salario, nome, aliquota, imposto e salario final
+
+    return 0;
 }
