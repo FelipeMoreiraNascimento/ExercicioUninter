@@ -29,4 +29,6 @@ int main()
     printf("Area = %.2f\n", area);
     printf("Perimetro = %.2f\n", perimetro);
 
+    return 0;
+
 }
