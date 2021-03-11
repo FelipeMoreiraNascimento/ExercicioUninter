@@ -6,7 +6,7 @@ int escolha, linha, coluna, linhadestino, colunadestino, peca = 0;
 #define LINHAS 8
 #define COLUNAS 8
 
-void menu()
+void menu() //menu de opcoes
 {
     printf("**********   Jogo Xadrez   **********\n");
     printf("1 - Peoes\n");
@@ -18,7 +18,7 @@ void menu()
     printf("4 - Bispos\n\n");
 }
 
-void contapecas(int tabuleiro[LINHAS][COLUNAS])
+void contapecas(int tabuleiro[LINHAS][COLUNAS]) //contabiliza a quantidade de peças que tem no tabuleiro
 {
     for (int i = 0; i < LINHAS; i++)
     {
@@ -52,7 +52,7 @@ void contapecas(int tabuleiro[LINHAS][COLUNAS])
     }
 }
 
-void zeraposicao(int linha, int coluna, int tabuleiro[LINHAS][LINHAS])
+void zeraposicao(int linha, int coluna, int tabuleiro[LINHAS][LINHAS]) //zera a posicao da casa quando uma peça é deslocada
 {
     for (int i = 0; i < LINHAS; i++)
     {
@@ -64,7 +64,7 @@ void zeraposicao(int linha, int coluna, int tabuleiro[LINHAS][LINHAS])
     printf("\n");
 }
 
-void exibequantidadedepecas()
+void exibequantidadedepecas() //mostra a quantidade de peças
 {
     printf("\nQuantidade de Peoes = %i\n", peao);
     printf("Quantidade de Cavalos = %i\n", cavalo);
@@ -74,16 +74,16 @@ void exibequantidadedepecas()
     printf("Quantidade de Rainha = %i\n", rainha);
 }
 
-void digitapeca()
+void digitapeca() //função para o usuario digitar a peça que deseja mover
 {
     printf("Qual peca deseja movimentar? digite a linha e a coluna dessa peca! ");
     scanf_s("%i %i", &linha, &coluna);
-
+    
     printf("Para onde deseja movimentar? digite a linha e a coluna de destino! ");
     scanf_s("%i %i", &linhadestino, &colunadestino);
 }
 
-void exibetabuleiro(int tabuleiro[LINHAS][COLUNAS])
+void exibetabuleiro(int tabuleiro[LINHAS][COLUNAS]) //exibe na taela o tabuleiro
 {
     for (int i = 0; i < LINHAS; i++)
     {
@@ -96,7 +96,7 @@ void exibetabuleiro(int tabuleiro[LINHAS][COLUNAS])
     printf("\n");
 }
 
-void validanovaposicaodapeca(int tabuleiro[LINHAS][COLUNAS])
+void validanovaposicaodapeca(int tabuleiro[LINHAS][COLUNAS]) //faz o cauculo na matriz para o deslocamento da peça
 {
     for (int i = 0; i < LINHAS; i++)
     {
@@ -140,12 +140,13 @@ int main()
         validanovaposicaodapeca(tabuleiro);
         zeraposicao(linha, coluna, tabuleiro);
         exibetabuleiro(tabuleiro);
-        contapecas(tabuleiro);
-        exibequantidadedepecas();
 
         printf("Deseja mover outra peca? Sim(8) Nao(9)\n");
         scanf_s("%i", &escolha);
     }
+
+    contapecas(tabuleiro);
+    exibequantidadedepecas();
 
     return 0;
 }
